@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Герыч </title>
+    <meta charset="utf-8" />
+
+    <script>
+		function myFun1() {
+            let name = document.getElementById('userName');
+            let mail = document.getElementById('userMail');
+			document.getElementById("createUser")
+				.innerHTML = `Добавлен уже: имя - ${name}, эл. почта ${mail}!`;
+        }
+/*первый вариант
+        function myFun2() {
+        let act = getUsers();
+        document.getElementById("getUsers")
+				.innerHTML = `Вот пож-ста! /n ${act}`;
+        }
+*/
+/*
+        function sendForm(){
+     // получаем значение поля userName, userAge
+        let userNameText = document.search.userName;
+        let userAgeText = document.search.userAge;
+        let name = userNameText.value;
+        let amail = userMailText.value;
+         alert(`Юзер добавлен: имя ${name}, возраст ${mail}`);
+ }
+ var sendButton = document.search.send;
+ sendButton.addEventListener("click", sendForm);
+*/
+
+</script>
+
+<script src="queries.js"></script>
+<script src="index.js"></script>
+
+</head>
+<body>
+    <h1>Хэллоу, Гееермааан! </h1>
+    <form method="post">
+        <label>Имя</label><br>
+        <input type="text" name="userName" id="userName"/><br><br>
+        <label>Возраст</label><br>
+        <input type="text" name="userMail" id="userMail"/><br><br>
+        <input type="submit" name="send" onclick="myFun1" value="Добавить юзера"/>
+    </form>
+
+	<h3 id="createUser">
+		
+	</h3>
+
+    <button type="button" onclick="getUserById()">
+		Найти юзера
+	</button>
+
+    <h3 id="getUserById">
+		щас будет...
+	</h3>
+
+    <button type="button" onclick="getUsers();">
+		Список юзеров
+    </button>
+
+    <h3 id="getUsers">
+		5 сек
+	</h3>
+
+</body>
+</html>

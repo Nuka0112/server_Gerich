@@ -1,8 +1,8 @@
 const express = require('express')
-//const bodyParser = require('body-parser')
+
+//const port = 3000
 const app = express()
 const db = require('./queries')
-const port = 3000
 
 
 app.get('/users', db.getUsers)
@@ -11,14 +11,6 @@ app.post('/users', db.createUser)
 app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)
 
-
-
-//Postman
-//http://localhost:3000/users/
-//{
-//  name: 'Gerich',
-//  email: 'test@mail.ru',
-//}
 
 /*
 app.use(bodyParser.json())
@@ -35,3 +27,12 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
 */
+
+
+
+//Postman
+//http://localhost:3000/users/
+//{
+//  name: 'Gerich',
+//  email: 'test@mail.ru',
+//}

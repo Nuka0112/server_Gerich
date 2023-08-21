@@ -6,12 +6,16 @@ const pool = new Pool({
   password: 'Fylhtq011210',
   port: 5432,
 })
+
+
 const getUsers = (request, response) => {
   pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
     response.status(200).json(results.rows)
+    //первый вариант
+    return results.rows;
   })
 }
 
@@ -23,8 +27,25 @@ const getUserById = (request, response) => {
       throw error
     }
     response.status(200).json(results.rows)
-  })
-}
+//пвторой вариант
+    document.getElementById("getUserById")
+				.innerHTML = `Вооот: ${results.rows}`;
+  
+//третий вариант
+    /*  let sql = `SELECT * FROM users WHERE id = ${id}`;
+      con.query(sql, function(err, rows, fields) {
+      if (err) throw err + console.log("NOT CONNECTED! " + err);
+
+      response.writeHead(200, {
+        'Content-Type': 'text/html'
+      });
+      let renderedHtml = ejs.render(content, {
+        rows: rows
+      });
+      response.end(renderedHtml);
+    }) */
+  }
+  )}
 
 const createUser = (request, response) => {
   const {name, email} = request.body
@@ -36,6 +57,7 @@ const createUser = (request, response) => {
     response.status(201).send(`User added with ID: ${results.insertId}`)
   })
 }
+
 
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)
@@ -63,6 +85,12 @@ const deleteUser = (request, response) => {
     response.status(200).send(`User deleted with ID: ${id}`)
   })
 }
+
+pool.end(function(err) {
+  if (err) {
+    return console.log(err.message);
+  }
+});
 
 module.exports = {
   getUsers,
